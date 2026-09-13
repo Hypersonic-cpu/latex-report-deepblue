@@ -16,8 +16,9 @@
 \RequirePackage{enumitem}
 \RequirePackage{microtype}
 \RequirePackage{caption}
+\RequirePackage{listings}
 \RequirePackage{tcolorbox}
-\tcbuselibrary{breakable,skins}
+\tcbuselibrary{breakable,skins,listings}
 \RequirePackage{hyperref}
 \RequirePackage{bookmark}
 \RequirePackage{setspace}
@@ -145,6 +146,45 @@
 \colorlet{TableStripeColor}{PaleBlue}
 \newcommand{\ReportTableRows}{\rowcolors{2}{TableStripeColor}{white}}
 \newcommand{\ReportTableHeader}[1]{\rowcolor{TableHeadColor}\sffamily\bfseries\color{Navy}#1}
+
+% ---------- Code blocks ----------
+\lstdefinestyle{ReportCode}{
+  basicstyle=\ttfamily\small\color{Ink},
+  keywordstyle=\color{DeepBlue}\bfseries,
+  commentstyle=\color{Muted}\itshape,
+  stringstyle=\color{MidBlue},
+  identifierstyle=\color{Ink},
+  showstringspaces=false,
+  keepspaces=true,
+  columns=fullflexible,
+  breaklines=true,
+  breakatwhitespace=false,
+  tabsize=2,
+  frame=none,
+  aboveskip=0pt,
+  belowskip=0pt
+}
+
+% The first optional argument is the title; the second is a listings
+% language such as C, C++, or Python. Leave the title empty for an unnamed box.
+\NewTCBListing{codeblock}{ O{} O{} }{%
+  enhanced,
+  breakable,
+  listing only,
+  colback=IceBlue,
+  colframe=LineBlue,
+  boxrule=0.6pt,
+  leftrule=3.2pt,
+  arc=1.2mm,
+  left=3.5mm,
+  right=3.5mm,
+  top=2.5mm,
+  bottom=2.5mm,
+  fonttitle=\rmfamily\bfseries\color{DeepBlue},
+  coltitle=DeepBlue,
+  listing options={style=ReportCode,language=#2},
+  title={#1}
+}
 
 % ---------- Restrained callout ----------
 \newtcolorbox{insightbox}[1][Key takeaway]{

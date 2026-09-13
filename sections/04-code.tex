@@ -1,0 +1,28 @@
+\chapter{Code}
+\sectionlead{Code blocks use the report's restrained colors while keeping language-aware syntax highlighting for source examples.}
+
+\section{Reusable code blocks}
+The \texttt{codeblock} environment accepts an optional title followed by an optional
+\texttt{listings} language. Use \texttt{C}, \texttt{C++}, or \texttt{Python} for
+syntax highlighting; leave the title empty when the code should appear without a
+heading.
+
+\begin{codeblock}[C++ example][C++]
+#include <numeric>
+#include <vector>
+
+int sum(const std::vector<int>& values) {
+    return std::accumulate(values.begin(), values.end(), 0);
+}
+\end{codeblock}
+
+\begin{codeblock}[][Python]
+def normalize(values):
+    total = sum(values)
+    if total == 0:
+        return values
+    return [value / total for value in values]
+\end{codeblock}
+
+Named and unnamed blocks share the same box geometry, spacing, and code typography;
+only the optional title and language determine their presentation.
