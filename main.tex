@@ -1,0 +1,30 @@
+% !TEX program = xelatex
+\documentclass[11pt,a4paper,oneside]{report}
+\usepackage{report-theme}
+
+% --------------------------------------------------
+% Report metadata: edit these fields first.
+% --------------------------------------------------
+\renewcommand{\ReportTitle}{Deep Blue Research Report}
+\renewcommand{\ReportSubtitle}{A restrained XeLaTeX template for technical and academic writing}
+\renewcommand{\ReportAuthor}{Your Name}
+\renewcommand{\ReportAffiliation}{Laboratory / Department / Institution}
+\renewcommand{\ReportDate}{August 2026}
+\renewcommand{\ReportShortTitle}{Deep Blue Report}
+\renewcommand{\ReportTagline}{RESEARCH NOTE / TECHNICAL REPORT}
+\renewcommand{\ReportVersion}{Template v1.1}
+
+\begin{document}
+
+\makecover
+
+\pagenumbering{roman}
+\tableofcontents
+\clearpage
+
+\pagenumbering{arabic}
+\input{sections/01-overview}
+\input{sections/02-components}
+\input{sections/03-guidance}
+
+\end{document}

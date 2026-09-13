@@ -1,0 +1,35 @@
+\chapter{Usage Guidance}
+\sectionlead{Most users should only edit report metadata, section files, and the palette or geometry values in \texttt{report-theme.sty}.}
+
+\section{Project structure}
+The project is intentionally small and modular. The root file contains metadeta and section order, while the visual system lives in one style file.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Files included in the template.}
+  \ReportTableRows
+  \begin{tabularx}{\textwidth}{L{0.27\textwidth} Y}
+    \toprule
+    \rowcolor{LightBlue}
+    \sffamily\bfseries\color{Navy}Path &
+    \sffamily\bfseries\color{Navy}Role \\
+    \midrule
+    \texttt{main.tex} & Entry point, report metadata, and section ordering. \\
+    \texttt{report-theme.sty} & Palette, typography, geometry, cover, headings, tables, headers, and helper components. \\
+    \texttt{sections/} & Example content split into chapter files. Replace these with your own report sections. \\
+    \texttt{figures/} & Recommended location for graphics and diagrams. \\
+    \texttt{Makefile} & Convenience commands for XeLaTeX compilation and cleanup. \\
+    \texttt{README.md} & Short setup and customization guide. \\
+    \bottomrule
+  \end{tabularx}
+\end{table}
+
+\section{Fast customization}
+For a slightly lighter report, change \texttt{Navy} and \texttt{DeepBlue} in the palette while leaving \texttt{PaleBlue} close to white. To make tables denser, reduce \verb|\arraystretch| from \texttt{1.32} to around \texttt{1.18}. To reclaim even more horizontal space, reduce the left and right margins from \texttt{18 mm} to \texttt{16 mm}; going much narrower is usually not recommended for printed A4 pages.
+
+\begin{insightbox}[Body styling rule]
+Keep the cover as the main visual statement. Inside the report, prefer white space, typography, and alignment over additional colored panels. This preserves readability when the document grows from five pages to fifty.
+\end{insightbox}
+
+\section{Compilation}
+Compile with XeLaTeX twice so the table of contents, page totals, and references settle correctly. The included Makefile performs this sequence.

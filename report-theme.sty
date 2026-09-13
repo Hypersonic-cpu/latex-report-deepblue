@@ -1,0 +1,245 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{report-theme}[2026/08/25 Elegant blue research report theme]
+
+\RequirePackage{fontspec}
+\RequirePackage{geometry}
+\RequirePackage{xcolor}
+\RequirePackage{graphicx}
+\RequirePackage{tikz}
+\RequirePackage{titlesec}
+\RequirePackage{fancyhdr}
+\RequirePackage{booktabs}
+\RequirePackage{tabularx}
+\RequirePackage{array}
+\RequirePackage{colortbl}
+\RequirePackage{ragged2e}
+\RequirePackage{enumitem}
+\RequirePackage{microtype}
+\RequirePackage{caption}
+\RequirePackage{tcolorbox}
+\tcbuselibrary{breakable,skins}
+\RequirePackage{hyperref}
+\RequirePackage{bookmark}
+\RequirePackage{setspace}
+\RequirePackage{lastpage}
+\RequirePackage{amsmath,amssymb}
+
+% ---------- Page geometry ----------
+% Deliberately wider than many academic defaults so tables can use the page.
+\geometry{
+  a4paper,
+  left=18mm,
+  right=18mm,
+  top=20mm,
+  bottom=20mm,
+  headheight=22pt,
+  headsep=7mm,
+  footskip=10mm
+}
+
+% ---------- Typography ----------
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{MesloLGSDZ Nerd Font Mono}[Scale=0.80]
+\linespread{1.04}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.58em}
+\emergencystretch=2em
+
+% ---------- Palette ----------
+\definecolor{Navy}{HTML}{0B2545}
+\definecolor{DeepBlue}{HTML}{123D67}
+\definecolor{MidBlue}{HTML}{4E86B7}
+\definecolor{LightBlue}{HTML}{DCEAF5}
+\definecolor{PaleBlue}{HTML}{F1F7FC}
+\definecolor{IceBlue}{HTML}{F7FAFD}
+\definecolor{LineBlue}{HTML}{C7D9E8}
+\definecolor{Ink}{HTML}{1D2733}
+\definecolor{Muted}{HTML}{687684}
+\definecolor{Gold}{HTML}{F2C14E}
+\definecolor{WarmWhite}{HTML}{FCFCFA}
+
+\color{Ink}
+
+% ---------- Hyperlinks ----------
+\hypersetup{
+  colorlinks=true,
+  linkcolor=DeepBlue,
+  citecolor=DeepBlue,
+  urlcolor=MidBlue,
+  pdfborder={0 0 0}
+}
+
+% ---------- Header / footer ----------
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\sffamily\small\color{Muted}\nouppercase{\leftmark}}
+\fancyhead[R]{\sffamily\small\color{Muted}\ReportShortTitle}
+\renewcommand{\headrulewidth}{0.35pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{LineBlue}\leaders\hrule height \headrulewidth\hfill}}
+\fancyfoot[L]{\sffamily\footnotesize\color{Muted}\ReportAuthor}
+\fancyfoot[R]{\sffamily\footnotesize\color{Muted}Page~\thepage~of~\pageref*{LastPage}}
+\renewcommand{\footrulewidth}{0pt}
+
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[R]{\sffamily\small\color{Muted}\ReportShortTitle}
+  \renewcommand{\headrulewidth}{0.35pt}
+  \renewcommand{\headrule}{\hbox to\headwidth{\color{LineBlue}\leaders\hrule height \headrulewidth\hfill}}
+  \fancyfoot[L]{\sffamily\footnotesize\color{Muted}\ReportAuthor}
+  \fancyfoot[R]{\sffamily\footnotesize\color{Muted}Page~\thepage~of~\pageref*{LastPage}}
+}
+
+% ---------- Headings ----------
+\titleformat{\chapter}[display]
+  {\rmfamily\bfseries\color{Navy}}
+  {\rmfamily\bfseries\fontsize{12.5}{15}\selectfont\color{MidBlue}\MakeUppercase{Chapter \thechapter}}
+  {0.34em}
+  {\rmfamily\bfseries\fontsize{26.5}{31.5}\selectfont}
+  [\vspace{0.45em}{\color{LineBlue}\titlerule}]
+\titlespacing*{\chapter}{0pt}{-4pt}{18pt}
+
+\titleformat{\section}
+  {\sffamily\bfseries\Large\color{Navy}}
+  {\color{Gold}\rule{0.72em}{0.72em}\hspace{0.55em}\color{DeepBlue}\thesection}
+  {0.55em}
+  {}
+\titlespacing*{\section}{0pt}{1.6em}{0.6em}
+
+\titleformat{\subsection}
+  {\sffamily\bfseries\large\color{DeepBlue}}
+  {\thesubsection}
+  {0.7em}
+  {}
+\titlespacing*{\subsection}{0pt}{1.25em}{0.35em}
+
+\titleformat{\subsubsection}
+  {\sffamily\bfseries\normalsize\color{DeepBlue}}
+  {\thesubsubsection}
+  {0.7em}
+  {}
+\titlespacing*{\subsubsection}{0pt}{1em}{0.25em}
+
+% ---------- Lists ----------
+\setlist[itemize]{leftmargin=1.45em,itemsep=0.18em,topsep=0.28em}
+\setlist[enumerate]{leftmargin=1.65em,itemsep=0.18em,topsep=0.28em}
+\setlist[itemize,1]{label=\textcolor{MidBlue}{\small\textbullet}}
+
+% ---------- Captions ----------
+\captionsetup{
+  font=small,
+  labelfont={bf,rm,color=DeepBlue},
+  textfont={color=Ink},
+  skip=6pt
+}
+
+% ---------- Tables ----------
+\renewcommand{\arraystretch}{1.32}
+\setlength{\tabcolsep}{7pt}
+\arrayrulecolor{LineBlue}
+\newcolumntype{Y}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{C}[1]{>{\Centering\arraybackslash}p{#1}}
+\newcolumntype{L}[1]{>{\RaggedRight\arraybackslash}p{#1}}
+\colorlet{TableHeadColor}{LightBlue}
+\colorlet{TableStripeColor}{PaleBlue}
+\newcommand{\ReportTableRows}{\rowcolors{2}{TableStripeColor}{white}}
+\newcommand{\ReportTableHeader}[1]{\rowcolor{TableHeadColor}\sffamily\bfseries\color{Navy}#1}
+
+% ---------- Restrained callout ----------
+\newtcolorbox{insightbox}[1][Key takeaway]{
+  enhanced,
+  breakable,
+  colback=IceBlue,
+  colframe=LineBlue,
+  boxrule=0.6pt,
+  leftrule=3.2pt,
+  arc=1.2mm,
+  left=3.5mm,
+  right=3.5mm,
+  top=2.5mm,
+  bottom=2.5mm,
+  fonttitle=\sffamily\bfseries\color{DeepBlue},
+  coltitle=DeepBlue,
+  title=#1
+}
+
+% ---------- Report metadata ----------
+\providecommand{\ReportTitle}{Research Report Title}
+\providecommand{\ReportSubtitle}{A concise subtitle that explains the scope}
+\providecommand{\ReportAuthor}{Author Name}
+\providecommand{\ReportAffiliation}{Institution or Research Group}
+\providecommand{\ReportDate}{\today}
+\providecommand{\ReportShortTitle}{Research Report}
+\providecommand{\ReportTagline}{TECHNICAL REPORT}
+\providecommand{\ReportVersion}{Version 1.0}
+
+% ---------- Cover ----------
+\newcommand{\makecover}{%
+  \begin{titlepage}
+  \thispagestyle{empty}
+  \begin{tikzpicture}[remember picture,overlay]
+    % Main navy field
+    \fill[Navy] (current page.south west) rectangle (current page.north east);
+
+    % Pale blue architectural blocks
+    \fill[DeepBlue!78!Navy]
+      ([xshift=0.67\paperwidth]current page.south west)
+      rectangle (current page.north east);
+    \fill[LightBlue,opacity=0.10]
+      ([xshift=0.70\paperwidth,yshift=0.18\paperheight]current page.south west)
+      rectangle ([xshift=0.94\paperwidth,yshift=0.82\paperheight]current page.south west);
+
+    % Yellow collision bands
+    \fill[Gold]
+      ([xshift=17mm]current page.north west)
+      rectangle ([xshift=22mm]current page.south west);
+    \fill[Gold]
+      ([xshift=0.70\paperwidth,yshift=-29mm]current page.north west)
+      rectangle ([yshift=-35mm]current page.north east);
+
+    % Fine framing lines
+    \draw[LightBlue,opacity=0.55,line width=0.55pt]
+      ([xshift=34mm,yshift=-28mm]current page.north west)
+      rectangle ([xshift=-20mm,yshift=28mm]current page.south east);
+    \draw[Gold,opacity=0.95,line width=1.1pt]
+      ([xshift=34mm,yshift=-58mm]current page.north west) --
+      ([xshift=0.58\paperwidth,yshift=-58mm]current page.north west);
+  \end{tikzpicture}
+
+  \vspace*{24mm}
+  \hspace*{26mm}
+  \begin{minipage}[t]{0.62\textwidth}
+    {\sffamily\bfseries\fontsize{12.5}{15}\selectfont\color{Gold}\MakeUppercase{\ReportTagline}}\\[22mm]
+    {\hyphenpenalty=10000\exhyphenpenalty=10000\RaggedRight\rmfamily\bfseries\fontsize{37}{42}\selectfont\color{white}\ReportTitle\par}
+    \vspace{5mm}
+    {\sffamily\fontsize{16.5}{22}\selectfont\color{LightBlue}\ReportSubtitle\par}
+    \vspace{16mm}
+    {\color{LightBlue}\rule{42mm}{0.6pt}}\\[5mm]
+    {\sffamily\fontsize{10.5}{15}\selectfont\color{white}
+      \textbf{\ReportAuthor}\\
+      \color{LightBlue}\ReportAffiliation}
+  \end{minipage}
+
+  \vfill
+  \hspace*{26mm}
+  \begin{minipage}[b]{0.59\textwidth}
+    {\sffamily\fontsize{9.5}{14}\selectfont\color{LightBlue}
+      \ReportDate\hspace{1.3em}\textcolor{Gold}{/}\hspace{1.3em}\ReportVersion}
+  \end{minipage}
+  \vspace*{22mm}
+  \end{titlepage}
+  \clearpage
+}
+
+% ---------- Small utility components ----------
+\newcommand{\sectionlead}[1]{%
+  {\large\color{Muted}\RaggedRight #1\par}\vspace{0.25em}
+}
+
+\newcommand{\metric}[2]{%
+  \begin{minipage}[t]{0.31\textwidth}
+    {\rmfamily\bfseries\fontsize{20}{23}\selectfont\color{DeepBlue}#1\par}
+    {\sffamily\small\color{Muted}#2\par}
+  \end{minipage}
+}

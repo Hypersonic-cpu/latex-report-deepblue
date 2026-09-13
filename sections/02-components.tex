@@ -1,0 +1,58 @@
+\chapter{Components}
+\sectionlead{The body components are deliberately conservative: strong enough to make hierarchy obvious, but quiet enough for long technical documents.}
+
+\section{Headings and hierarchy}
+Chapter titles use navy with a thin pale-blue rule. Section headings use a small yellow square only as a locator; there are no large colored banners in the body. Subsection headings step down to a smaller blue sans-serif style.
+
+\subsection{A representative subsection}
+This is the default body level for most analysis. Equations remain conventional and inherit the surrounding typography:
+\begin{equation}
+  S = \frac{T_{\mathrm{baseline}}}{T_{\mathrm{proposed}}},
+\end{equation}
+where \(S\) is speedup, and the two terms denote the baseline and proposed execution times.
+
+\subsection{Lists}
+Lists use a small blue bullet and compact spacing. They work best when the items are genuinely parallel:
+\begin{itemize}
+  \item Keep section titles short and informational.
+  \item Prefer full-width tables for methodology, prior work, and experiment matrices.
+  \item Reserve yellow for small accents rather than body backgrounds.
+\end{itemize}
+
+\section{Figures}
+Use normal figure placement and captions. The frame below is only a placeholder; replace it with your own PDF, SVG-converted PDF, PNG, or JPEG asset.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+    \fill[IceBlue] (0,0) rectangle (13.2,5.0);
+    \draw[LineBlue,line width=0.8pt] (0,0) rectangle (13.2,5.0);
+    \draw[MidBlue,line width=1.2pt] (0.8,0.8) -- (3.1,2.0) -- (5.2,1.55) -- (7.5,3.5) -- (10.0,2.9) -- (12.3,4.1);
+    \node[font=\sffamily,text=Muted] at (6.6,0.42) {Replace this placeholder with a research figure};
+  \end{tikzpicture}
+  \caption{Restrained figure framing for the report body.}
+\end{figure}
+
+\section{Another table pattern}
+For dense comparative work, use the same alternating row pattern and let \texttt{tabularx} absorb the available width.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Example methodology matrix.}
+  \ReportTableRows
+  \begin{tabularx}{\textwidth}{L{0.18\textwidth} L{0.19\textwidth} Y Y}
+    \toprule
+    \rowcolor{LightBlue}
+    \sffamily\bfseries\color{Navy}Dimension &
+    \sffamily\bfseries\color{Navy}Setting &
+    \sffamily\bfseries\color{Navy}Rationale &
+    \sffamily\bfseries\color{Navy}What to report \\
+    \midrule
+    Platform & Hardware / simulator & Establish reproducibility and architectural context & GPU model, clocks, memory system, interconnect \\
+    Workloads & Benchmark suite & Cover representative access patterns rather than a single kernel & Input size, warm-up, measured region \\
+    Baseline & Prior or default design & Avoid misleading speedups from weak comparison points & Exact configuration and source \\
+    Metrics & Performance and cost & Separate benefit from side effects & Speedup, bandwidth, coverage, accuracy, storage \\
+    Sensitivity & Key parameters & Test robustness instead of one tuned point & Sweep range and decision threshold \\
+    \bottomrule
+  \end{tabularx}
+\end{table}

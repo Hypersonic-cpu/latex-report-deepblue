@@ -1,0 +1,42 @@
+# macOS metadata
+.DS_Store
+
+# LaTeX auxiliary and build files
+*.4ct
+*.4tc
+*.acn
+*.acr
+*.alg
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.glo
+*.glg
+*.gls
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+
+# Generated PDFs are ignored except for the final compiled report.
+*.pdf
+!main.pdf
+
+# PDF source figures remain trackable.
+!figures/*.pdf
+!figures/**/*.pdf
