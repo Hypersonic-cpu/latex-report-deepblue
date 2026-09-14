@@ -187,6 +187,23 @@
   title={#1}
 }
 
+% ---------- Two-column content ----------
+% Keep the width in the theme so section files only describe their content.
+\newcommand{\ReportTwoColumnWidth}{0.485\textwidth}
+\newenvironment{twocolumns}{%
+  \par\noindent
+  \begin{minipage}[t]{\ReportTwoColumnWidth}%
+    \vspace{0pt}%
+}{%
+  \end{minipage}%
+  \par
+}
+\newcommand{\twocolumnbreak}{%
+  \end{minipage}\hfill%
+  \begin{minipage}[t]{\ReportTwoColumnWidth}%
+    \vspace{0pt}%
+}
+
 % ---------- Restrained callout ----------
 \newtcolorbox{insightbox}[1][Key takeaway]{
   enhanced,

@@ -7,8 +7,7 @@ The \texttt{codeblock} environment accepts an optional title followed by an opti
 syntax highlighting; leave the title empty when the code should appear without a
 heading.
 
-\noindent
-\begin{minipage}[t]{0.485\textwidth}
+\begin{twocolumns}
 \begin{codeblock}[C++ example][C++]
 #include <numeric>
 #include <vector>
@@ -17,8 +16,7 @@ int sum(const std::vector<int>& values) {
     return std::accumulate(values.begin(), values.end(), 0);
 }
 \end{codeblock}
-\end{minipage}\hfill%
-\begin{minipage}[t]{0.485\textwidth}
+\twocolumnbreak
 \begin{codeblock}[Python example][Python]
 def normalize(values):
     total = sum(values)
@@ -26,7 +24,7 @@ def normalize(values):
         return values
     return [value / total for value in values]
 \end{codeblock}
-\end{minipage}
+\end{twocolumns}
 
 The two examples use the same \texttt{codeblock} style; the titles identify the
 language while the two columns keep the examples together for comparison.
