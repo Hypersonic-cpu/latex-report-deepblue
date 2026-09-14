@@ -34,25 +34,18 @@ Use normal figure placement and captions. The frame below is only a placeholder;
 \end{figure}
 
 \section{Another table pattern}
-For dense comparative work, use the same alternating row pattern and let \texttt{tabularx} absorb the available width.
+For dense comparative work, use the same alternating row pattern and let \texttt{reporttable} distribute the available width automatically.
 
 \begin{table}[htbp]
   \centering
   \caption{Example methodology matrix.}
-  \ReportTableRows
-  \begin{tabularx}{\textwidth}{L{0.18\textwidth} L{0.19\textwidth} Y Y}
-    \toprule
-    \rowcolor{LightBlue}
-    \sffamily\bfseries\color{Navy}Dimension &
-    \sffamily\bfseries\color{Navy}Setting &
-    \sffamily\bfseries\color{Navy}Rationale &
-    \sffamily\bfseries\color{Navy}What to report \\
-    \midrule
+  \begin{reporttable}{4}
+    \ReportTableHeader
+    Dimension & Setting & Rationale & What to report \\
     Platform & Hardware / simulator & Establish reproducibility and architectural context & GPU model, clocks, memory system, interconnect \\
     Workloads & Benchmark suite & Cover representative access patterns rather than a single kernel & Input size, warm-up, measured region \\
     Baseline & Prior or default design & Avoid misleading speedups from weak comparison points & Exact configuration and source \\
     Metrics & Performance and cost & Separate benefit from side effects & Speedup, bandwidth, coverage, accuracy, storage \\
     Sensitivity & Key parameters & Test robustness instead of one tuned point & Sweep range and decision threshold \\
-    \bottomrule
-  \end{tabularx}
+  \end{reporttable}
 \end{table}

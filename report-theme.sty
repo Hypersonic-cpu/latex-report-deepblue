@@ -10,6 +10,7 @@
 \RequirePackage{fancyhdr}
 \RequirePackage{booktabs}
 \RequirePackage{tabularx}
+\RequirePackage{tabularray}
 \RequirePackage{array}
 \RequirePackage{colortbl}
 \RequirePackage{ragged2e}
@@ -146,7 +147,24 @@
 \colorlet{TableHeadColor}{LightBlue}
 \colorlet{TableStripeColor}{PaleBlue}
 \newcommand{\ReportTableRows}{\rowcolors{2}{TableStripeColor}{white}}
-\newcommand{\ReportTableHeader}[1]{\rowcolor{TableHeadColor}\sffamily\bfseries\color{Navy}#1}
+\NewTableCommand\ReportTableHeader{%
+  \SetRow{bg=TableHeadColor,fg=Navy,font=\sffamily\bfseries}%
+}
+\NewDocumentEnvironment{reporttable}{m +b}{%
+  \begin{tblr}{
+    width=\textwidth,
+    colspec={*{#1}{X[l]}},
+    colsep=7pt,
+    rowsep=3pt,
+    rows={fg=Ink,font=\rmfamily},
+    row{odd}={bg=TableStripeColor},
+    row{even}={bg=white},
+    hline{1,Z}={\heavyrulewidth,LineBlue},
+    hline{2}={\lightrulewidth,LineBlue}
+  }
+  #2
+  \end{tblr}%
+}{}
 
 % ---------- Code blocks ----------
 \lstdefinestyle{ReportCode}{

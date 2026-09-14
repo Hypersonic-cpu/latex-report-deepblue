@@ -7,21 +7,16 @@ The project is intentionally small and modular. The root file contains metadeta 
 \begin{table}[htbp]
   \centering
   \caption{Files included in the template.}
-  \ReportTableRows
-  \begin{tabularx}{\textwidth}{L{0.27\textwidth} Y}
-    \toprule
-    \rowcolor{LightBlue}
-    \sffamily\bfseries\color{Navy}Path &
-    \sffamily\bfseries\color{Navy}Role \\
-    \midrule
+  \begin{reporttable}{2}
+    \ReportTableHeader
+    Path & Role \\
     \texttt{main.tex} & Entry point, report metadata, and section ordering. \\
     \texttt{report-theme.sty} & Palette, typography, geometry, cover, headings, tables, headers, and helper components. \\
     \texttt{sections/} & Example content split into chapter files. Replace these with your own report sections. \\
     \texttt{figures/} & Recommended location for graphics and diagrams. \\
     \texttt{Makefile} & Convenience commands for XeLaTeX compilation and cleanup. \\
     \texttt{README.md} & Short setup and customization guide. \\
-    \bottomrule
-  \end{tabularx}
+  \end{reporttable}
 \end{table}
 
 \section{Fast customization}

@@ -26,7 +26,7 @@ xelatex -interaction=nonstopmode -halt-on-error main.tex
 
 ## Table styling
 
-Use `\ReportTableRows` immediately before `tabularx`, then make the header row `\rowcolor{LightBlue}`. The body alternates between `PaleBlue` and white. The default table width in the examples is `\textwidth`.
+Use `reporttable` with the number of columns, and put `\ReportTableHeader` at the start of the header row. The environment supplies the full text width, automatic equal-width columns, top and bottom rules, header styling, and alternating `PaleBlue`/white body rows. Configure those visual choices in `report-theme.sty`.
 
 ## Fonts
 
